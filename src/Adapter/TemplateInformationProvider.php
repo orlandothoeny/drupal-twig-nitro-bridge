@@ -84,7 +84,7 @@ class TemplateInformationProvider implements TemplateInformationProviderInterfac
    * Generate Paths array from Terrific Configuration.
    */
   private function generatePaths() {
-    $components = $this->terrificConfig['nitro']['components'];
+    $components = $this->terrificConfig['nitro']['views'];
     foreach ($components as $name => $component) {
       $this->paths[$name] = $this->basePath . '/' . $component['path'];
     }
