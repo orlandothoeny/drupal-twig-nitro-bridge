@@ -13,11 +13,15 @@
     "Nitro"
   ],
   "require": {
+    "drupal/core": "*",
     "namics/twig-nitro-library": "~1.0.1"
   },
   "autoload": {
     "psr-4": {
       "Drupal\\twig_nitro_bridge\\": "src/"
     }
+  },
+  "conflict": {
+    "drupal/drupal": "*"
   }
 }

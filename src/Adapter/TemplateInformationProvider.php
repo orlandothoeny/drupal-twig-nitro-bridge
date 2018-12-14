@@ -2,11 +2,9 @@
 
 namespace Drupal\twig_nitro_bridge\Adapter;
 
-use Deniaz\Terrific\Config\ConfigReader;
 use Deniaz\Terrific\Provider\TemplateInformationProviderInterface;
-use Drupal\Core\Config\ConfigFactory as DrupalConfigFactory;
-use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\twig_nitro_bridge\Services\FrontendConfigReader;
 
 /**
  * Class TemplateInformationProvider.
@@ -26,7 +24,7 @@ class TemplateInformationProvider implements TemplateInformationProviderInterfac
    *
    * @var string
    */
-  private $basePath = '';
+  private $frontendPath = '';
 
   /**
    * Terrific's config.json Content.
@@ -45,32 +43,22 @@ class TemplateInformationProvider implements TemplateInformationProviderInterfac
   /**
    * TemplateLocator constructor.
    *
-   * @param DrupalConfigFactory $config_factory
-   *    Config factory param.
-   * @param FileSystemInterface $filesystem
-   *    FileSystem.
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
+   * @param \Drupal\twig_nitro_bridge\Services\FrontendConfigReader $frontendConfigReader
+   *   The frontend config reader service.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $loggerFactory
    *   The logger factory service.
    */
-  public function __construct(
-    DrupalConfigFactory $config_factory,
-    FileSystemInterface $filesystem,
-    LoggerChannelFactoryInterface $logger_factory
-  ) {
-    $this->basePath = $filesystem
-      ->realpath(
-        DRUPAL_ROOT . '/' . $config_factory->get('twig_nitro_bridge.settings')->get('frontend_dir')
-      );
-
-    $this->terrificConfig = (new ConfigReader($this->basePath))->read();
-    $this->logger = $logger_factory->get('twig_nitro_bridge');
+  public function __construct(FrontendConfigReader $frontendConfigReader, LoggerChannelFactoryInterface $loggerFactory) {
+    $this->terrificConfig = $frontendConfigReader->getConfig();
+    $this->frontendPath = $frontendConfigReader->getFrontendPath();
+    $this->logger = $loggerFactory->get('twig_nitro_bridge');
   }
 
   /**
    * Returns a list of paths where templates can be found.
    *
    * @return array
-   *    Return array of paths.
+   *   Return array of paths.
    */
   public function getPaths() {
     if (empty($this->paths)) {
@@ -86,7 +74,7 @@ class TemplateInformationProvider implements TemplateInformationProviderInterfac
   private function generatePaths() {
     $components = $this->terrificConfig['nitro']['views'];
     foreach ($components as $name => $component) {
-      $this->paths[$name] = $this->basePath . '/' . $component['path'];
+      $this->paths[$name] = $this->frontendPath . '/' . $component['path'];
     }
   }
 
@@ -94,7 +82,7 @@ class TemplateInformationProvider implements TemplateInformationProviderInterfac
    * File extension.
    *
    * @return mixed
-   *    Template File Extension.
+   *   Template File Extension.
    *
    * @throws \Drupal\twig_nitro_bridge\Adapter\DomainException
    *    Exception.

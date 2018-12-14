@@ -23,21 +23,21 @@ class ContextProvider implements ContextProviderInterface {
   /**
    * Compiler.
    *
-   * @var Twig_Compiler
+   * @var \Twig_Compiler
    */
   private $compiler;
 
   /**
    * Component.
    *
-   * @var Twig_Node
+   * @var \Twig_Node
    */
   private $component;
 
   /**
    * DataVariant.
    *
-   * @var Twig_Node
+   * @var \Twig_Node
    */
   private $dataVariant;
 
