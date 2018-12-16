@@ -12,8 +12,14 @@
     "Twig",
     "Nitro"
   ],
+  "repositories": {
+    "taikonauten/drupal-twig-nitro-library": {
+      "type": "git",
+      "url": "https://github.com/taikonauten/twig-nitro-library.git"
+    }
+  },
   "require": {
-    "namics/twig-nitro-library": "~1.0.1"
+    "taikonauten/drupal-twig-nitro-library": "*"
   },
   "autoload": {
     "psr-4": {
