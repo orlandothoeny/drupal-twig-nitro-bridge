@@ -1,5 +1,5 @@
 {
-  "name": "taikonauten/drupal-twig-nitro-bridge",
+  "name": "taikonauten/drupal-twig-nitro-libra",
   "description": "Provides integration for the Nitro Twig library within Drupal.",
   "type": "drupal-module",
   "license": "MIT",
@@ -13,13 +13,13 @@
     "Nitro"
   ],
   "repositories": {
-    "taikonauten/drupal-twig-nitro-library": {
+    "0": {
       "type": "git",
       "url": "https://github.com/taikonauten/twig-nitro-library.git"
     }
   },
   "require": {
-    "taikonauten/drupal-twig-nitro-library": "1.0.2"
+    "taikonauten/twig-nitro-library": "1.0.2"
   },
   "autoload": {
     "psr-4": {
