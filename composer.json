@@ -1,5 +1,5 @@
 {
-  "name": "taikonauten/drupal-twig-nitro-libra",
+  "name": "taikonauten/drupal-twig-nitro-bridge",
   "description": "Provides integration for the Nitro Twig library within Drupal.",
   "type": "drupal-module",
   "license": "MIT",
