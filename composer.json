@@ -1,11 +1,11 @@
 {
-  "name": "namics/drupal-twig-nitro-bridge",
+  "name": "taikonauten/drupal-twig-nitro-bridge",
   "description": "Provides integration for the Nitro Twig library within Drupal.",
   "type": "drupal-module",
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/namics/drupal-twig-nitro-bridge/issues",
-    "source": "https://github.com/namics/drupal-twig-nitro-bridge"
+    "issues": "https://github.com/taikonauten/drupal-twig-nitro-bridge/issues",
+    "source": "https://github.com/taikonauten/drupal-twig-nitro-bridge"
   },
   "keywords": [
     "Drupal",
