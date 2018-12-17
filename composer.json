@@ -19,11 +19,15 @@
     }
   },
   "require": {
-    "taikonauten/twig-nitro-library": "1.0.2"
+    "drupal/core": "*",
+    "taikonauten/twig-nitro-library": "^1.0.2"
   },
   "autoload": {
     "psr-4": {
       "Drupal\\twig_nitro_bridge\\": "src/"
     }
+  },
+  "conflict": {
+    "drupal/drupal": "*"
   }
 }
